@@ -91,7 +91,7 @@ class PostsController < Sinatra::Base
   end
 
   get "/movies/:id/edit" do
-    id = params[:id]
+    id = params[:id].to_i
     @title = "Edit Movie #{id}"
 
     @post = $posts[id]
@@ -100,7 +100,7 @@ class PostsController < Sinatra::Base
   end
 
   put "/movies/:id" do
-    id = params[:id]
+    id = params[:id].to_i
     "Updates a specifc #{id}"
   end
 

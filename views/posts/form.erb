@@ -1,0 +1,20 @@
+<form action="movies/<%= @post[:id] %>" method="post">
+  <div>
+    <label>Title</label>
+    <input type="text" name="title" value="<%= @post[:title] %>" placeholder="Enter a Movie Title">
+  </div>
+  <div>
+    <label>Release Year</label>
+    <input type="number" name="release_year" value="<%= @post[:release_year] %>" placeholder="Enter the year of Release">
+  </div>
+  <div>
+    <label>Rating</label>
+    <input type="text" name="rating" value="<%= @post[:rating] %>" placeholder="Enter a rating">
+  </div>
+  <div>
+    <input type="submit" value="post">
+  </div>
+  <% if(@post[:id] !="") %>
+    <input type="hidden" name="_method" value="PUT">
+  <% end %>
+</form>

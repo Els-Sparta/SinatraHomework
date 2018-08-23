@@ -61,23 +61,42 @@ class PostsController < Sinatra::Base
 
   get "/movies/new" do
     @title = "Request new Movie"
-    "Requesting a new movie to the server"
+    @post = {
+      id: "",
+      title: "",
+      release_year: "",
+      rating: ""
+    }
     erb :'posts/new'
   end
 
   post "/movies" do
-    "Posting a new movie to the server"
+    new_movie = {
+      id: $posts.length,
+      title: params[:title],
+      release_year: params[:release_year],
+      rating: params[:rating]
+    }
+
+    $posts.push(new_movie)
+
+    redirect "/"
   end
 
   get "/movies/:id" do
     id = params[:id].to_i
+    @title = "Movie #{id}"
     @post = $posts[id]
     erb :'posts/show'
   end
 
   get "/movies/:id/edit" do
     id = params[:id]
-    "Edit that specifc #{id} (movie)"
+    @title = "Edit Movie #{id}"
+
+    @post = $posts[id]
+
+    erb :'posts/edit'
   end
 
   put "/movies/:id" do

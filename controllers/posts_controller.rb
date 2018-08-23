@@ -36,19 +36,33 @@ class PostsController < Sinatra::Base
   },
   {
     id:4,
+    title: "12 Angry Men",
+    release_year: '1957',
+    rating: '8.9'
+  },
+  {
+    id:5,
+    title: "Schindler's List",
+    release_year: '1993',
+    rating: '8.9'
+  },
+  {
+    id:6,
     title: "Lord of the Rings: The Return of the King",
     release_year: '2003',
     rating: '8.9'
   }]
 
   get "/movies" do
-    "Hello there"
+    @title = "Top Rated Movies"
     @posts = $posts
     erb :'posts/index'
   end
 
   get "/movies/new" do
+    @title = "Request new Movie"
     "Requesting a new movie to the server"
+    erb :'posts/new'
   end
 
   post "/movies" do
@@ -56,8 +70,9 @@ class PostsController < Sinatra::Base
   end
 
   get "/movies/:id" do
-    id = params[:id]
-    "Retrieve a specific #{id} (movie)"
+    id = params[:id].to_i
+    @post = $posts[id]
+    erb :'posts/show'
   end
 
   get "/movies/:id/edit" do

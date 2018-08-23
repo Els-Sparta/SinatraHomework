@@ -11,6 +11,7 @@ class PostsController < Sinatra::Base
 
   get "/movies" do
     "Hello there"
+    erb :'posts/index'
   end
 
   get "/movies/new" do

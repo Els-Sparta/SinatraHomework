@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!-- Since nav-bar is common throughout the webpage, this will load it on all the pages because layout will alwys be first thing to generate -->
+    <%= erb(:"partials/navigation", :layout => false) %>
+    <%= yield %>
+  </body>
+</html>

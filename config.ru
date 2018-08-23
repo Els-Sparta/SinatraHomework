@@ -7,3 +7,8 @@ require 'sinatra/reloader' if development?
 require 'pry'
 # To link the config file to the controller
 require_relative './controllers/posts_controller'
+
+use Rack::Reloader
+use Rack::MethodOverride
+# Direct the request to the correct controller
+run PostsController

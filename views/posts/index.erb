@@ -1,0 +1,8 @@
+<h1>Welcome to the Movies Homepage</h1>
+<% @posts.each do |post| %>
+  <div>
+    <h3><a href="movies/<%= post[:id] %>"><%= post[:title] %></a></h3>
+    <p>Release Year: <%= post[:release_year] %></p>
+    <p>Rating: <%= post[:rating] %></p>
+  </div>
+<% end %>
